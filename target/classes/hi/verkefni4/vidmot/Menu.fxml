@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="fxBackground" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni4.vidmot.MenuController">
+   <children>
+      <Label text="Veldu erfiðleikastig" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="fxButton2" mnemonicParsing="false" onAction="#byrjaSnake2" prefWidth="100.0" text="🐍🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="300.0">
+         <tooltip>
+            <Tooltip text="Passaðu þig á veggjunum!" />
+         </tooltip></Button>
+      <Button fx:id="fxButton1" layoutX="204.0" layoutY="77.0" mnemonicParsing="false" onAction="#byrjaSnake1" prefWidth="100.0" text="🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="250.0">
+         <tooltip>
+            <Tooltip text="Klassískur snákur, þú kemst í gegnum veggi" />
+         </tooltip></Button>
+      <Button fx:id="fxButton3" mnemonicParsing="false" onAction="#byrjaSnake3" prefWidth="100.0" text="🐍🐍🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0">
+         <tooltip>
+            <Tooltip text="Þú kemst í gegnum veggi, jei! en nú er fugl að reyna að éta þig :(" />
+         </tooltip></Button>
+      <Button fx:id="fxButton4" mnemonicParsing="false" onAction="#byrjaSnake4" prefWidth="100.0" text="🐍🐍🐍🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="400.0">
+         <tooltip>
+            <Tooltip text="Tveir fuglar! Eitraðir veggir! ef þú þorir..." />
+         </tooltip></Button>
+      <Label alignment="CENTER" text="S N Á K U R" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="120.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="fxHelp" mnemonicParsing="false" onAction="#sjaHelp" text="Leiðbeiningar" />
+      <Button fx:id="fxLeaderboard" mnemonicParsing="false" onAction="#sjaStig" prefHeight="25.6" prefWidth="88.0" text="Stigatafla" AnchorPane.leftAnchor="88.0" />
+   </children>
+</AnchorPane>

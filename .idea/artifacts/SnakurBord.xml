@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SnakurBord">
+    <output-path>$PROJECT_DIR$/out/artifacts/SnakurBord</output-path>
+    <root id="archive" name="SnakurBord.jar">
+      <element id="module-output" name="Snake" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:17.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:17.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:17.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:17.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:17.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:17.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:17.0.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:17.0.1" />
+    </root>
+  </artifact>
+</component>
