@@ -13,19 +13,19 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="fxButton2" mnemonicParsing="false" onAction="#byrjaSnake2" prefWidth="100.0" text="🐍🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="300.0">
+      <Button fx:id="fxButton2" mnemonicParsing="false" onAction="#byrjaSnake2" prefWidth="100.0" text="2" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="300.0">
          <tooltip>
             <Tooltip text="Passaðu þig á veggjunum!" />
          </tooltip></Button>
-      <Button fx:id="fxButton1" layoutX="204.0" layoutY="77.0" mnemonicParsing="false" onAction="#byrjaSnake1" prefWidth="100.0" text="🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="250.0">
+      <Button fx:id="fxButton1" layoutX="204.0" layoutY="77.0" mnemonicParsing="false" onAction="#byrjaSnake1" prefWidth="100.0" text="1" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="250.0">
          <tooltip>
             <Tooltip text="Klassískur snákur, þú kemst í gegnum veggi" />
          </tooltip></Button>
-      <Button fx:id="fxButton3" mnemonicParsing="false" onAction="#byrjaSnake3" prefWidth="100.0" text="🐍🐍🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0">
+      <Button fx:id="fxButton3" mnemonicParsing="false" onAction="#byrjaSnake3" prefWidth="100.0" text="3" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0">
          <tooltip>
             <Tooltip text="Þú kemst í gegnum veggi, jei! en nú er fugl að reyna að éta þig :(" />
          </tooltip></Button>
-      <Button fx:id="fxButton4" mnemonicParsing="false" onAction="#byrjaSnake4" prefWidth="100.0" text="🐍🐍🐍🐍" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="400.0">
+      <Button fx:id="fxButton4" mnemonicParsing="false" onAction="#byrjaSnake4" prefWidth="100.0" text="4" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="400.0">
          <tooltip>
             <Tooltip text="Tveir fuglar! Eitraðir veggir! ef þú þorir..." />
          </tooltip></Button>
@@ -34,7 +34,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="fxHelp" mnemonicParsing="false" onAction="#sjaHelp" text="Leiðbeiningar" />
-      <Button fx:id="fxLeaderboard" mnemonicParsing="false" onAction="#sjaStig" prefHeight="25.6" prefWidth="88.0" text="Stigatafla" AnchorPane.leftAnchor="88.0" />
+      <Button fx:id="fxHelp" mnemonicParsing="false" onAction="#sjaHelp" prefHeight="25.0" prefWidth="88.0" text="Leiðbeiningar" />
+      <Button fx:id="fxLeaderboard" mnemonicParsing="false" onAction="#sjaStig" prefHeight="25.0" prefWidth="88.0" text="Stigatafla" AnchorPane.leftAnchor="88.0" />
    </children>
 </AnchorPane>
