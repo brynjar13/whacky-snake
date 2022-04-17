@@ -37,6 +37,7 @@ public class NyrLeikurDialog extends DialogPane {
 
     /**
      * Aðferð sem tékkar hvort leikmaður vill spila annan leik
+     * ef vill annan leik, skilar true
      * @return Boolean
      */
     public boolean nyrLeikur() {

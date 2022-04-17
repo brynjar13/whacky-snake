@@ -23,13 +23,12 @@ public class Faeda extends Rectangle {
     private Random r = new Random();
     private int posx = r.nextInt(14);
     private int posy = r.nextInt(14);
-    private String name;
 
     /**
-     * Smiður fyrir fæðu sem setur hana á handahófskenndan stað á borðinu og setur radíus
+     * Smiður fyrir fæðu sem setur hana á handahófskenndan stað á borðinu og setur radíus.
+     * setur rétta mynd á fæðu.
      */
     public Faeda() {
-        name = "matur";
         this.setHeight(30);
         this.setWidth(30);
         position = new Position(posx * 30, posy * 30);
@@ -38,14 +37,24 @@ public class Faeda extends Rectangle {
         this.setFill(new ImagePattern(mainFood));
     }
 
+    /**
+     * Aðferð sem skilar staðsetningu á fæðu
+     * @return
+     */
     public Position getPosition() {
         return position;
     }
 
+    /**
+     * Aðferð sem færir fæðu eitthvert annað á leikborðið
+     */
     public void faeraFaedu(){
         getRandomSpotForFood();
     }
 
+    /**
+     * Aðferð sem finnur random stað á leikborðinu fyrir fæðuna
+     */
     public void getRandomSpotForFood(){
         int positionX = r.nextInt(14);
         int positionY = r.nextInt(14);
@@ -54,9 +63,5 @@ public class Faeda extends Rectangle {
 
         position.setXPos(positionX * 30);
         position.setYPos(positionY * 30);
-    }
-
-    public String getName() {
-        return name;
     }
 }

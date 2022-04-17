@@ -15,6 +15,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**********************************************************
+ * Nafn: Brynjar Bjarkason
+ * T-póstur: brb83@hi.is
+ *
+ * Lýsing: Viðmótsklasi sem er controller fyrir stigatöfluna í leiknum.
+ * Hefur lesa high score í skrá og setja hjá viðeigandi erfiðleikastigi.
+ * Hefur aðferðir til þess að sjá komast á valmynd fyrir leikinn.
+ * *********************************************************/
 public class StigataflaController implements Initializable {
 
     @FXML
@@ -28,6 +36,12 @@ public class StigataflaController implements Initializable {
     @FXML
     private Button fxMenu;
 
+    /**
+     * Aðferð sem keyrist í byrjun
+     * setur rétt high score við erfiðleikastig
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         try {
@@ -40,7 +54,11 @@ public class StigataflaController implements Initializable {
         }
     }
 
-
+    /**
+     * Aðferð sem fer með notanda aftur á valmynd senuna ef ýtt er á takka.
+     * @param event
+     * @throws IOException
+     */
     public void backToMenu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("Menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
@@ -52,7 +70,12 @@ public class StigataflaController implements Initializable {
         stage.show();
     }
 
-    public void birtaStig(int erfidleikastig) throws IOException{
+    /**
+     * Aðferð sem að les texta skrár með high score og setur rétt high score við erfiðleikastig.
+     * @param erfidleikastig
+     * @throws IOException
+     */
+    private void birtaStig(int erfidleikastig) throws IOException{
         File file = new File("erfidleikastig"+erfidleikastig+".txt");
         Scanner scan = new Scanner(file);
         int highScore = scan.nextInt();

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>hi.verkefni3.vidmot</groupId>
+    <groupId>hi.verkefni4.vidmot</groupId>
     <artifactId>Snake</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Snake</name>
@@ -62,9 +62,9 @@
                         <configuration>
                             <mainClass>hi.verkefni3.vidmot.verkefni1/hi.verkefni4.vidmot.SnakurApplication
                             </mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
+                            <launcher>snake</launcher>
+                            <jlinkZipName>snake-game</jlinkZipName>
+                            <jlinkImageName>snake</jlinkImageName>
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>

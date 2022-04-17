@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni4.vidmot.StigataflaController">
@@ -23,62 +22,59 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="60.0" layoutY="210.0" prefWidth="50.0" text="2" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="180.0">
+      <Label alignment="CENTER" layoutX="60.0" layoutY="210.0" prefWidth="50.0" text="2" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="260.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="160.0" layoutY="210.0" prefWidth="50.0" text="4" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="180.0">
+      <Label alignment="CENTER" layoutX="160.0" layoutY="210.0" prefWidth="50.0" text="4" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="420.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="410.0" layoutY="210.0" prefWidth="50.0" text="3" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="180.0">
+      <Label alignment="CENTER" layoutX="410.0" layoutY="210.0" prefWidth="50.0" text="3" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="340.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label text="High score:" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="250.0">
+      <Label text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="180.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Line endX="99.99996185302734" endY="199.99998474121094" startX="99.9999771118164" startY="500.0000305175781" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="200.0" />
-      <Line endX="99.99996185302734" endY="199.99998474121094" layoutX="41.0" layoutY="11.0" startX="99.9999771118164" startY="500.0000305175781" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="200.0" />
-      <Line endX="99.99996185302734" endY="199.99998474121094" layoutX="41.0" layoutY="11.0" startX="99.9999771118164" startY="500.0000305175781" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
-      <Label fx:id="fxScore1" text="2000" AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="250.0">
+      <Label fx:id="fxScore1" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="180.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="20.0" layoutY="260.0" text="High score:" AnchorPane.leftAnchor="132.0" AnchorPane.topAnchor="250.0">
+      <Label layoutX="20.0" layoutY="260.0" text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="260.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fxScore2" layoutX="88.0" layoutY="260.0" text="2000" AnchorPane.leftAnchor="204.0" AnchorPane.topAnchor="250.0">
+      <Label fx:id="fxScore2" layoutX="88.0" layoutY="260.0" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="260.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="142.0" layoutY="260.0" text="High score:" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="250.0">
+      <Label layoutX="142.0" layoutY="260.0" text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="420.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fxScore4" layoutX="88.0" layoutY="260.0" text="2000" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
+      <Label fx:id="fxScore4" layoutX="88.0" layoutY="260.0" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="420.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="142.0" layoutY="260.0" text="High score:" AnchorPane.rightAnchor="178.0" AnchorPane.topAnchor="250.0">
+      <Label layoutX="142.0" layoutY="260.0" text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="340.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fxScore3" layoutX="460.0" layoutY="260.0" text="2000" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="250.0">
+      <Label fx:id="fxScore3" layoutX="460.0" layoutY="260.0" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="340.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <Button fx:id="fxMenu" mnemonicParsing="false" onAction="#backToMenu" text="Aftur á valmynd" />

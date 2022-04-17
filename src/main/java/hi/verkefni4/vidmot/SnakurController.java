@@ -29,6 +29,7 @@ import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -47,6 +48,7 @@ public class SnakurController implements Initializable {
     private boolean canTurnRight = true;
     private boolean canTurnUp = true;
     private boolean canTurnDown = true;
+    private boolean canTurn = true;
 
     @FXML
     private SnakurBord snakurBord; // leikborð fyrir leikinn
@@ -60,11 +62,12 @@ public class SnakurController implements Initializable {
     private AnchorPane main;
     private Timeline t;
     private int fjoldieitursnaka;
-    private boolean veggirDrepa;
+    private boolean veggirDrepa; // ef true þá er leik lokið ef snákur fer útaf leikborðinu
     private int erfidleikastig;
     private int gameticks;
     private int gamePauseCheck;
     private boolean start = true;
+    private boolean keyPressed = false; // breyta sem passar að það sé ekki hægt að ýta á tvo örvatakka áður en snákur hreyfir sig
     public Leikur stig = new Leikur();
 
     /**
@@ -72,34 +75,38 @@ public class SnakurController implements Initializable {
      * @param i
      */
     public void setStefna(int i) {
-        if (i == 90 && canTurnUp) {
+        if (i == 90 && canTurnUp && !keyPressed) {
             canTurnDown = false;
             snakurBord.snakur.setAtt(i);
             canTurnRight = true;
             canTurnLeft = true;
             startSnake();
         }
-        if (i == 270 && canTurnDown) {
+        if (i == 270 && canTurnDown && !keyPressed) {
             canTurnUp = false;
             snakurBord.snakur.setAtt(i);
             canTurnRight = true;
             canTurnLeft = true;
             startSnake();
         }
-        if (i == 180 && canTurnLeft) {
+        if (i == 180 && canTurnLeft && !keyPressed) {
             canTurnRight = false;
             snakurBord.snakur.setAtt(i);
             canTurnUp = true;
             canTurnDown = true;
             startSnake();
         }
-        if (i == 360 && canTurnRight) {
+        if (i == 360 && canTurnRight && !keyPressed) {
             canTurnLeft = false;
             snakurBord.snakur.setAtt(i);
             canTurnUp = true;
             canTurnDown = true;
             startSnake();
         }
+    }
+
+    public void setKeyPressed(boolean b) {
+        keyPressed = b;
     }
 
     public void setVeggirDrepa(boolean b) {
@@ -114,11 +121,16 @@ public class SnakurController implements Initializable {
         erfidleikastig = i;
     }
 
+    /**
+     * Aðferð sem lætur notanda vita hvernig hann byrjar leik í fyrsta skipti
+     * sem leikurinn er ræstur og byrjar leikinn
+     * @param e
+     */
     public void pressStart(KeyEvent e) {
         if (e.getCode() == KeyCode.S && start) {
             fxPasa.setText("Ýttu á örvatakka til að fara áfram");
             nyrLeikur(fjoldieitursnaka);
-            hefjaLeik();
+            hefjaLeik(veggirDrepa);
             t.stop();
             snakurBord.snakur.setVeggirDrepa(veggirDrepa);
             start = false;
@@ -132,7 +144,6 @@ public class SnakurController implements Initializable {
     /**
      * setur Bakgrunn á leikborðið.
      * Setur bind á stigin þannig að það breytist þegar snákurinn borðar
-     * kallar á leikja lúppuna hefjaleik()
      * @param url
      * @param resourceBundle
      */
@@ -152,12 +163,14 @@ public class SnakurController implements Initializable {
     }
 
     /**
-     * Aðferð sem geymir leikja lúppuna
+     * Aðferð sem geymir leikjalúppuna.
+     * @param walls segir hvort veggir drepa eða ekki
      */
-    public void hefjaLeik() {
-        if (veggirDrepa) {
+    public void hefjaLeik(boolean walls) {
+        if (walls) {
             KeyFrame k = new KeyFrame(Duration.millis(150),
                     e-> {  // lambda fall sem er kallað á þegar ActionEvent atburðurinn er fíraður í lok
+                        keyPressed = false;
                         snakurBord.snakur.positions.add(new Position(snakurBord.snakur.getX() + snakurBord.snakur.getxPos(), snakurBord.snakur.getY() + snakurBord.snakur.getyPos()));
                         snakurBord.snakur.rotations.add(snakurBord.snakur.getRotate());
                         snakurBord.snakur.afram();
@@ -184,6 +197,7 @@ public class SnakurController implements Initializable {
         else {
             KeyFrame k = new KeyFrame(Duration.millis(150),
                     e-> {  // lambda fall sem er kallað á þegar ActionEvent atburðurinn er fíraður í lok
+                        keyPressed = false;
                         snakurBord.snakur.positions.add(new Position(snakurBord.snakur.getX() + snakurBord.snakur.getxPos(), snakurBord.snakur.getY() + snakurBord.snakur.getyPos()));
                         snakurBord.snakur.rotations.add(snakurBord.snakur.getRotate());
                         snakurBord.snakur.afram();
@@ -280,6 +294,11 @@ public class SnakurController implements Initializable {
         }
     }
 
+    /**
+     * Aðferð sem er kallað í þegar leikmaður vill ekki spila aftur.
+     * fer með notanda á valmynd
+     * @throws IOException
+     */
     public void menu() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("Menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
@@ -291,6 +310,13 @@ public class SnakurController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Aðferð sem athugar hvort að high score í leiknum sem var að klárast var meira eða minna high score í því erfiðleikastigi.
+     * ef high score var hærra þá er það skrifað í skrá.
+     *
+     * @param erfidleikastig í hvaða erfiðleikastigi leikurinn var
+     * @param thisHighScore high score í leiknum
+     */
     private void printTofile(int erfidleikastig, int thisHighScore) {
         int currentHighScore = readFile(erfidleikastig);
         File file = new File("erfidleikastig"+erfidleikastig+".txt");
@@ -308,6 +334,12 @@ public class SnakurController implements Initializable {
         }
     }
 
+    /**
+     * Hjálparfall sem að les high score úr skrá í viðeigandi erfiðleikastigi
+     *
+     * @param erfidleikastig
+     * @return
+     */
     private int readFile(int erfidleikastig) {
         File file = new File("erfidleikastig"+erfidleikastig+".txt");
 
@@ -321,6 +353,10 @@ public class SnakurController implements Initializable {
         return 0;
     }
 
+    /**
+     * Aðferð sem tékkar hvort að leikurinn sé stopp eða ekki.
+     * ef hann er stop þá er hann settur í gang aftur
+     */
     private void startSnake() {
         if (t.getStatus() == Animation.Status.STOPPED
                 && gamePauseCheck != snakurBord.snakur.getAtt()) {

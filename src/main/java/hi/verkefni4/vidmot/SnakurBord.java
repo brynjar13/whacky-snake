@@ -1,9 +1,6 @@
 package hi.verkefni4.vidmot;
 
-import hi.verkefni4.vinnsla.Position;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.Bounds;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
@@ -15,11 +12,10 @@ import java.util.Random;
  * T-póstur: brb83@hi.is
  *
  * Lýsing: Sérhæfður klasi sem býr til Leikborðið fyrir snake leikinn.
- * hefur aðferðir til þess að birta og fjarlæga hluti á leikborðinu
+ * hefur aðferðir til þess að birta og fjarlæga hluti á leikborðinu.
  *********************************************************/
 public class SnakurBord extends Pane {
 
-    private List<Faeda> faeda = FXCollections.observableArrayList();
     private List<EiturSnakur> eiturSnakar = FXCollections.observableArrayList();
     public Snakur snakur;
     private Random random = new Random();
@@ -32,6 +28,7 @@ public class SnakurBord extends Pane {
 
     /**
      * Aðferð til þess að setja snákinn á leikborðið
+     *
      */
     public void byrjaLeik() {
         snake = ((SnakurController) getScene().getUserData());
@@ -41,13 +38,16 @@ public class SnakurBord extends Pane {
         this.getChildren().add(snakur);
     }
 
+    /**
+     * Aðferð sem bætir við snák part á leikborðið
+     */
     public void addTail() {
         Rectangle r = snakur.vaxa();
         this.getChildren().add(r);
     }
 
     /**
-     * Aðferð til þess að bæta við eitursnákum á leikborðinu
+     * Aðferð til þess að bæta við eitursnákum á leikborðið.
      * @param i
      */
     public void nyirEitursnakar(int i) {
@@ -81,6 +81,12 @@ public class SnakurBord extends Pane {
         this.getChildren().add(matur);
     }
 
+    /**
+     * Aðferð sem setur mat sem er ekki venjulegur matur á leikborðið
+     * tekur inn random tölu og ef talan er 2 þá er fæðunni bætt á leikborðið
+     * @param i random tala
+     * @param f matur
+     */
     public void eldaOdruvisiMat(int i, Faeda f) {
         if (i == 2) {
             moveMatur(f);
@@ -88,10 +94,19 @@ public class SnakurBord extends Pane {
         }
     }
 
+    /**
+     * Aðferð sem fjarlægir fæðu sem er ekki venjuleg fæða af leikborðinu
+     * @param f fæða
+     */
     public void hendaOdruvisiMat(Faeda f) {
         this.getChildren().remove(f);
     }
 
+    /**
+     * Aðferð sem færir fæðu þegar hún er borðuð.
+     * ef hún er í snák er hún færð aftur
+     * @param f
+     */
     public void moveMatur(Faeda f) {
         f.faeraFaedu();
         while (maturInSnake(f)) {
@@ -99,6 +114,13 @@ public class SnakurBord extends Pane {
         }
     }
 
+    /**
+     * Hjálparfall sem tékkar hvort að fæðan sé inní snáknum eða ekki
+     * tékkar hvort að staðsetningin á fæðunni sé sú sama og einhver staðsetning í snaka parta staðsetningunum,
+     * ef svo er skilar true
+     * @param f
+     * @return
+     */
     private boolean maturInSnake(Faeda f){
         int size = snakur.positions.size();
         if(size > 2){
@@ -108,30 +130,6 @@ public class SnakurBord extends Pane {
                     return true;
                 }
             }
-        }
-        return false;
-    }
-
-    private boolean maturInVondurMatur(Faeda f) {
-        if (f.getPosition().getXPos() == vondurMatur.getPosition().getXPos()
-                && f.getPosition().getYPos() == vondurMatur.getPosition().getYPos()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean maturInOfurMatur(Faeda f) {
-        if (f.getPosition().getXPos() == ofurMatur.getPosition().getXPos()
-                && f.getPosition().getYPos() == ofurMatur.getPosition().getYPos()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean maturInMatur(Faeda f) {
-        if (f.getPosition().getXPos() == matur.getPosition().getXPos()
-                && f.getPosition().getYPos() == matur.getPosition().getYPos()) {
-            return true;
         }
         return false;
     }
@@ -167,6 +165,10 @@ public class SnakurBord extends Pane {
         }
     }
 
+    /**
+     * Aðferð sem að sér til þess að ofurMatur sé ekki endalaust á borðinu.
+     * ef snákur borðar 2 epli á meðan ofurmatur er á borðinu er hann fjarlægður
+     */
     private void ofurMaturController() {
         if (this.getChildren().contains(ofurMatur)) {
             ofurRounds++;
@@ -181,6 +183,10 @@ public class SnakurBord extends Pane {
         }
     }
 
+    /**
+     * Aðferð sem að sér til þess að vondur matur sé ekki endalaust á borðinu.
+     * ef snákur borðar 2 epli á meðan vondur matur er á borðinu er hann fjarlægður
+     */
     private void vondurMaturController() {
         if (this.getChildren().contains(vondurMatur)) {
             vondurRound++;

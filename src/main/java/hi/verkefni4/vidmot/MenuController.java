@@ -17,6 +17,14 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+/**********************************************************
+ * Nafn: Brynjar Bjarkason
+ * T-póstur: brb83@hi.is
+ *
+ * Lýsing: Viðmótsklasi sem er controller fyrir valmyndina fyrir leikinn.
+ * Hefur aðferðir til þess að byrja leik í mismunandi erfiðleikastigum.
+ * Hefur aðferðir til þess að sjá leiðbeiningar og stigatöflu fyrir leikinn.
+ * *********************************************************/
 public class MenuController implements Initializable {
 
     private static final int NIDUR=270;
@@ -37,29 +45,16 @@ public class MenuController implements Initializable {
     @FXML
     private Button fxButton4;
     @FXML
-    private Button fxHelp;
-    @FXML
-    private Button fxLeaderboard;
-    @FXML
     private AnchorPane fxBackground;
 
-    public void byrjaSnake1(ActionEvent e) throws IOException {
-        erfidleikastig1();
-    }
-
-    public void byrjaSnake2(ActionEvent e) throws IOException {
-        erfidleikastig2();
-    }
-
-    public void byrjaSnake3(ActionEvent e) throws IOException {
-        erfidleikastig3();
-    }
-
-    public void byrjaSnake4(ActionEvent e) throws IOException {
-        erfidleikastig4();
-    }
-
-    private void erfidleikastig1() throws IOException{
+    /**
+     * Aðferð sem byrjar snake leik í erfiðleikastigi 1
+     * setur upplýsingar um fjölda eitursnáka og hvort veggir drepa eða ekki
+     * @param e
+     * @throws IOException
+     */
+    @FXML
+    private void erfidleikastig1(ActionEvent e) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("SnakurAdal-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         SnakurController sc =  fxmlLoader.getController();
@@ -74,7 +69,14 @@ public class MenuController implements Initializable {
         stage.show();
     }
 
-    private void erfidleikastig2() throws IOException{
+    /**
+     * Aðferð sem byrjar snake leik í erfiðleikastigi 2
+     * setur upplýsingar um fjölda eitursnáka og hvort veggir drepa eða ekki
+     * @param e
+     * @throws IOException
+     */
+    @FXML
+    private void erfidleikastig2(ActionEvent e) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("SnakurAdal-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         SnakurController sc =  fxmlLoader.getController();
@@ -89,7 +91,14 @@ public class MenuController implements Initializable {
         stage.show();
     }
 
-    private void erfidleikastig3() throws IOException{
+    /**
+     * Aðferð sem byrjar snake leik í erfiðleikastigi 3
+     * setur upplýsingar um fjölda eitursnáka og hvort veggir drepa eða ekki
+     * @param e
+     * @throws IOException
+     */
+    @FXML
+    private void erfidleikastig3(ActionEvent e) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("SnakurAdal-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         SnakurController sc =  fxmlLoader.getController();
@@ -104,7 +113,14 @@ public class MenuController implements Initializable {
         stage.show();
     }
 
-    private void erfidleikastig4() throws IOException{
+    /**
+     * Aðferð sem byrjar snake leik í erfiðleikastigi 4
+     * setur upplýsingar um fjölda eitursnáka og hvort veggir drepa eða ekki
+     * @param e
+     * @throws IOException
+     */
+    @FXML
+    private void erfidleikastig4(ActionEvent e) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("SnakurAdal-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         SnakurController sc =  fxmlLoader.getController();
@@ -119,6 +135,12 @@ public class MenuController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Aðferð sem keyrist í byrjun
+     * setur bakgrunnsmynd á senuna
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Image img = new Image(MenuController.class.getResourceAsStream("myndir/snakeBackground.png"));
@@ -129,7 +151,7 @@ public class MenuController implements Initializable {
 
     /**
      * Aðferð sem að mappar örvatakka á lyklaborði yfir í heiltölur.
-     * setur heiltölu í aðferð sem segir í hvaða átt snákurinn snýr
+     * setur heiltölu í aðferð sem segir í hvaða átt snákurinn snýr.
      * @param sc
      * @param scene
      */
@@ -142,6 +164,7 @@ public class MenuController implements Initializable {
                 keyEvent -> {
                     if (keyEvent.getCode().isArrowKey()) {
                         sc.setStefna(map.get(keyEvent.getCode()));
+                        sc.setKeyPressed(true); // passar að taka ekki við of hröðum takkaslátt
                     } else if (keyEvent.getCode().isWhitespaceKey()) {
                         sc.setjaUppBid(keyEvent);
                     } else if (keyEvent.getCode() == KeyCode.S) {
@@ -152,6 +175,11 @@ public class MenuController implements Initializable {
                 });
     }
 
+    /**
+     * Aðferð sem fer með notanda á leiðbeininga scene ef ýtt er á "leiðbeiningar" takkan.
+     * @param event
+     * @throws IOException
+     */
     public void sjaHelp(ActionEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("Help.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
@@ -163,6 +191,11 @@ public class MenuController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Aðferð sem fer með notanda á stigatöflu scene-ið ef að ýtt er á "stigatafla" takkan.
+     * @param event
+     * @throws IOException
+     */
     public void sjaStig(ActionEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("Stigatafla.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);

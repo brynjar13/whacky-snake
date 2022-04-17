@@ -1,13 +1,10 @@
 package hi.verkefni4.vidmot;
 
 import hi.verkefni4.vinnsla.Position;
-import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,38 +12,31 @@ import java.util.List;
  * Nafn: Brynjar Bjarkason
  * T-póstur: brb83@hi.is
  *
- * Lýsing: Viðmótsklasi sem býr til býr til Snák, erfir frá eitursnák
+ * Lýsing: Viðmótsklasi sem býr til býr til Snák
  * setur hæð, breidd og staðsetningu snáksins.
- * hefur aðferð til að stækka snák
+ * hefur aðferðir til þess að setja og fá átt á snák.
+ * hefur aðferðir til að stækka snák, færa hann áfram og sjá hvort hann klessir á sjálfan sig
  *********************************************************/
 public class Snakur extends Rectangle {
 
     public Image snakeHeadSprite = new Image(Snakur.class.getResourceAsStream("myndir/tile000.png"));
-    public Image snakeTailSprite = new Image(Snakur.class.getResourceAsStream("myndir/tile007.png"));
     public Image snakeBodySprite = new Image(Snakur.class.getResourceAsStream("myndir/tile008.png"));
-    public Image snakeBodyLeftSprite = new Image(Snakur.class.getResourceAsStream("myndir/tile002.png"));
-    public Image snakeBodyRightSprite = new Image(Snakur.class.getResourceAsStream("myndir/tile001.png"));
-    public Image snakeBodyDownRightSprite = new Image(Snakur.class.getResourceAsStream("myndir/tile004.png"));
-    public Image snakeBodyDownLeftSprite = new Image(Snakur.class.getResourceAsStream("myndir/tile005.png"));
-
-    private boolean aframCheck = false;
-
-    private int checkRotation;
     public int att;
 
-    private double snakeSize = 30;
+    private final double snakeSize = 30;
     private double xPos;
     private double yPos;
-    private int gameTicks;
+    private int gameTicks; // hversu oft loopan er buinn að keyrast
 
-    public final List<Position> positions = new ArrayList<>();
-    public final List<Double> rotations = new ArrayList<>();
-    public final ArrayList<Rectangle> snakeBody = new ArrayList<>();
+    public final List<Position> positions = new ArrayList<>(); // Listi af öllum staðsetningum snáksins
+    public final List<Double> rotations = new ArrayList<>(); // Listi af öllum snúningum snáksins
+    public final ArrayList<Rectangle> snakeBody = new ArrayList<>(); // Listi af öllum snák pörtunum
     public boolean veggirDrepa;
 
     /**
      * Smiður fyrir Snákinn.
      * Setur hæð, breidd og staðsetningu fyrir snákinn.
+     * setur rétta mynd á snákinn
      */
     public Snakur() {
         this.setHeight(snakeSize);
@@ -98,7 +88,7 @@ public class Snakur extends Rectangle {
                 this.setTranslateY(yPos);
             }
         }
-        if (att == 180 ) {
+        if (att == 180) {
             xPos = xPos - snakeSize;
             this.setTranslateX(xPos);
             this.setRotate(90);
@@ -107,7 +97,7 @@ public class Snakur extends Rectangle {
                 this.setTranslateX(xPos);
             }
         }
-        if (att == 360 ) {
+        if (att == 360) {
             xPos = xPos + snakeSize;
             this.setTranslateX(xPos);
             this.setRotate(270);
@@ -118,10 +108,18 @@ public class Snakur extends Rectangle {
         }
     }
 
+    /**
+     * Aðferð til þess að sjá hvar snákurinn er á x-ásnum
+     * @return double, x-position
+     */
     public double getxPos() {
         return xPos;
     }
 
+    /**
+     * Aðferð til þess að sjá hvar snákurinn er á y-ásnum
+     * @return double, y-position
+     */
     public double getyPos() {
         return yPos;
     }
@@ -136,12 +134,17 @@ public class Snakur extends Rectangle {
         yPos = 210;
     }
 
+    /**
+     * Aðferð sem tekur inn hvort veggir eiga að drepa eða ekki og setur rétt gildi á veggirDrepa breytuna
+     * @param b
+     */
     public void setVeggirDrepa(boolean b) {
         veggirDrepa = b;
     }
 
     /**
-     * Aðferð sem lætur snákinn vaxa, kallað í þegar hann borðar
+     * Aðferð sem lætur snákinn vaxa, kallað í þegar hann borðar.
+     * Bætir við Rectangle á snákinn í hvert skipti þegar hann vex
      */
     public Rectangle vaxa() {
         Rectangle snakeTail;
@@ -182,11 +185,21 @@ public class Snakur extends Rectangle {
         return null;
     }
 
+    /**
+     * Aðferð sem tekur inn heiltölu g og setur það gildi á gameticks breytunna
+     * @param g
+     */
     public void setGameTicks(int g) {
         gameTicks = g;
     }
 
-    public void snakeTailAfram(Rectangle skott, int numer) {
+    /**
+     * Aðferð til þess að færa búkinn á snáknum áfram.
+     * finnur staðsetningu snáksins og færir hvern búk hluta miðað við þar sem snákurinn var.
+     * @param skott
+     * @param numer
+     */
+    private void snakeTailAfram(Rectangle skott, int numer) {
         double yPos = positions.get(gameTicks - numer + 1).getYPos() - skott.getY();
         double xPos = positions.get(gameTicks - numer + 1).getXPos() - skott.getX();
         double rotation = rotations.get(gameTicks - numer + 1);
@@ -195,26 +208,21 @@ public class Snakur extends Rectangle {
         skott.setTranslateY(yPos);
     }
 
+    /**
+     * Fer í gegnum búkinn á snáknum og kallar í SnakeTailAfram() fyrir hvern.
+     */
     public void moveSnakeTail() {
         for (int i = 1; i < snakeBody.size(); i++) {
             snakeTailAfram(snakeBody.get(i), i);
         }
     }
 
-
-
     /**
-     * Aðferð til að sjá hvort snákur hefur klesst á eitursnák
-     * @param es eitursnákur
+     * Aðferð til að sjá hvort snákur hefur klesst á sjálfan sig
+     * skoðar staðsetninguna á snáknum og fer í gegnum allar staðsetningarnar á búknum.
+     * ef staðsetningin á snáknum er sú sama og einhver í búknum þá skilar true.
      * @return boolean
      */
-    public boolean erArekstur(EiturSnakur es) {
-        if (es.getLayoutBounds().intersects(this.getLayoutBounds())) {
-            return true;
-        }
-        else return false;
-    }
-
     public boolean erKlessaSjalfanSig() {
         int size = positions.size() - 1;
         if(size > 2){
@@ -228,6 +236,11 @@ public class Snakur extends Rectangle {
         return false;
     }
 
+    /**
+     * Aðferð sem athugar hvort snákur hefur klesst á vegg.
+     * finnur staðsetninguna á snáknum og ef hún er ekki inná leikborðinu er skilað true.
+     * @return
+     */
     public boolean erKlessaVegg() {
         if (xPos < -210 || xPos > 210 -snakeSize || yPos < -210 || yPos > 210 -snakeSize) {
             return true;
@@ -237,6 +250,7 @@ public class Snakur extends Rectangle {
 
     /**
      * Aðferð til að sjá hvort snákur hefur borðað mat
+     * finnur staðsetningu á matnum og snáknum og ef hún er sú sama er skilað true
      * @param f faeda
      * @return boolean
      */
@@ -247,6 +261,11 @@ public class Snakur extends Rectangle {
         else return false;
     }
 
+    /**
+     * Aðferð sem kallað er í þegar leikur byrjar upp á nýtt.
+     * tæmir snák búkinn og allar staðsetningarnar
+     * bætir svo við hausnum aftur
+     */
     public void reset() {
         gameTicks=0;
         snakeBody.clear();

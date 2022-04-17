@@ -1,32 +1,25 @@
 package hi.verkefni4.vidmot;
 
 import javafx.application.Application;
-import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 /**********************************************
  * Nafn: Brynjar Bjarkason
  * T-póstur: brb83@hi.is
  *
- * Lýsing: stillir hversu stórt scene er. Loadar .fxml skrá sem er notuð fyrir útlit.
- * Hefur aðferð til þess að mappa orvatakka í heiltölur
+ * Lýsing: stillir hversu stórt scene er. Loadar menu.fxml skrá sem er valmynd forritsins.
  * Keyrir forritið.
- *
  **********************************************/
 public class SnakurApplication extends Application {
 
     @Override
 
     /**
-     * Stillir hversu stórt scene er. Loadar SnakurAdal-view.fxml skrá sem er notuð fyrir útlit.
+     * Stillir hversu stórt scene er. Loadar menu.fxml skrá sem er valmynd forritsins.
      * @param stage
      * @throws IOException
      */

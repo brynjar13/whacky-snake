@@ -15,10 +15,9 @@ import java.util.Random;
  * Nafn: Brynjar Bjarkason
  * T-póstur: brb83@hi.is
  *
- * Lýsing: Viðmótsklasi sem býr til býr til eitursnák.
+ * Lýsing: Viðmótsklasi sem býr til býr til eitursnák(Örn).
  * setur rétta hæð, breidd og staðsetningu.
- * hefur aðferðir til þess að setja og fá átt á snák.
- * hefur aðferðir til að hreyfa snák og eitursnák áfram
+ * hefur aðferðir til þess að hreyfa eitursnák(Örn) áfram
  *********************************************************/
 public class EiturSnakur extends Snakur {
 
@@ -46,6 +45,11 @@ public class EiturSnakur extends Snakur {
         snakeBody.add(this);
     }
 
+    /**
+     * Aðferð sem hreyfir eitursnákana áfram.
+     * býr til random tölu þegar snákur hreyfir sig og lætur hana stjórna hvert ernirnir hreyfa sig
+     * @param att
+     */
     public void aframEiturSnakar(int att) {
         if (eiturAtt != att && xPos % 30 == 0 && yPos % 30 == 0) {
             eiturAtt = att;
@@ -89,18 +93,16 @@ public class EiturSnakur extends Snakur {
         }
     }
 
+    /**
+     * Aðferð sem tékkar hvort að örninn étur snákinn.
+     * Tekur inn snak og tékkar hvort að snakur og örn eru á sama stað, ef svo er skilar true
+     * @param snakur
+     * @return boolean
+     */
     public boolean erArekstur(Snakur snakur) {
         if (xPos - 210 == snakur.getxPos() && yPos -210 == snakur.getyPos()) {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Aðferð sem setur eitursnákana á réttan stað
-     */
-    public void rightEitursnakaPos() {
-        this.setX(0);
-        this.setY(0);
     }
 }
