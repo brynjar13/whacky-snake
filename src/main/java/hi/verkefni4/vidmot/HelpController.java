@@ -18,7 +18,7 @@ import java.io.IOException;
  *********************************************************/
 public class HelpController {
     @FXML
-    private Button fxMenu;
+    private Button fxMenu; // takki til að fara aftur í valmynd
 
 
     /**

@@ -48,7 +48,6 @@ public class SnakurController implements Initializable {
     private boolean canTurnRight = true;
     private boolean canTurnUp = true;
     private boolean canTurnDown = true;
-    private boolean canTurn = true;
 
     @FXML
     private SnakurBord snakurBord; // leikborð fyrir leikinn
@@ -57,7 +56,7 @@ public class SnakurController implements Initializable {
     @FXML
     private Label fxPasa; // label sem segir hvort það sé pása eða ekki
     @FXML
-    private Label fxHighScore;
+    private Label fxHighScore; // Label sem segir hvað high-scoreið er í current session
     @FXML
     private AnchorPane main;
     private Timeline t;

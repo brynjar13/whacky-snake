@@ -14,6 +14,7 @@ import java.util.Random;
  *
  * Lýsing: Viðmótsklasi sem býr til býr til Faedu.
  * setur rétta hæð, breidd og staðsetningu.
+ * hefur aðferðir til þess að færa fæðu.
  *********************************************************/
 public class Faeda extends Rectangle {
 
