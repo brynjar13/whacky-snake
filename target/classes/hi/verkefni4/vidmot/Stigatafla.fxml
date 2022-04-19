@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni4.vidmot.StigataflaController">
+   <children>
+      <Label alignment="CENTER" text="STIGATAFLAN" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" text="Erfiðleikastig" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="100.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" prefWidth="50.0" text="1" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="180.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="60.0" layoutY="210.0" prefWidth="50.0" text="2" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="260.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="160.0" layoutY="210.0" prefWidth="50.0" text="4" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="420.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="410.0" layoutY="210.0" prefWidth="50.0" text="3" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="340.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="180.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="fxScore1" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="180.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="260.0" text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="260.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="fxScore2" layoutX="88.0" layoutY="260.0" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="260.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="142.0" layoutY="260.0" text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="420.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="fxScore4" layoutX="88.0" layoutY="260.0" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="420.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="142.0" layoutY="260.0" text="High score:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="340.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="fxScore3" layoutX="460.0" layoutY="260.0" text="2000" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="340.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="fxMenu" mnemonicParsing="false" onAction="#backToMenu" text="Aftur á valmynd" />
+   </children>
+</AnchorPane>

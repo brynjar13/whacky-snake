@@ -1,14 +1,18 @@
 package hi.verkefni4.vidmot;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -46,6 +50,8 @@ public class MenuController implements Initializable {
     private Button fxButton4;
     @FXML
     private AnchorPane fxBackground;
+    @FXML
+    private Label fxErfidleikastigLabel;
 
     /**
      * Aðferð sem byrjar snake leik í erfiðleikastigi 1
@@ -147,6 +153,55 @@ public class MenuController implements Initializable {
         BackgroundImage backgroundImage= new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background background = new Background(backgroundImage);
         fxBackground.setBackground(background);
+        fxButton1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("Klassískur snákur, þú kemst í gegnum veggi");
+            }
+        });
+        fxButton1.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("");
+            }
+        });
+        fxButton2.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("Passaðu þig á veggjunum!");
+            }
+        });
+        fxButton2.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("");
+            }
+        });
+        fxButton3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("Þú kemst í gegnum veggi, jei! en nú er fugl að reyna að éta þig :(");
+            }
+        });
+        fxButton3.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("");
+            }
+        });
+        fxButton4.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("Tveir fuglar! Eitraðir veggir! ef þú þorir...");
+            }
+        });
+        fxButton4.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                fxErfidleikastigLabel.setText("");
+            }
+        });
+
     }
 
     /**
@@ -196,10 +251,10 @@ public class MenuController implements Initializable {
      * @param event
      * @throws IOException
      */
-    public void sjaStig(ActionEvent event) throws IOException{
+    public void sjaStig(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SnakurApplication.class.getResource("Stigatafla.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
-        StigataflaController stc =  fxmlLoader.getController();
+        StigataflaController stc = fxmlLoader.getController();
         scene.setUserData(fxmlLoader.getController());
         Stage stage = (Stage) fxButton4.getScene().getWindow();
         stage.setTitle("Menu");

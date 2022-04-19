@@ -170,7 +170,6 @@ public class SnakurController implements Initializable {
         if (walls) {
             KeyFrame k = new KeyFrame(Duration.millis(150),
                     e-> {  // lambda fall sem er kallað á þegar ActionEvent atburðurinn er fíraður í lok
-                        keyPressed = false;
                         snakurBord.snakur.positions.add(new Position(snakurBord.snakur.getX() + snakurBord.snakur.getxPos(), snakurBord.snakur.getY() + snakurBord.snakur.getyPos()));
                         snakurBord.snakur.rotations.add(snakurBord.snakur.getRotate());
                         snakurBord.snakur.afram();
@@ -188,6 +187,7 @@ public class SnakurController implements Initializable {
                                 }
                             });
                         }
+                        keyPressed = false;
                     });
             t = new Timeline(k);           // tengjum timeline og tímabilið
             t.setCycleCount(Timeline.INDEFINITE);
@@ -197,7 +197,6 @@ public class SnakurController implements Initializable {
         else {
             KeyFrame k = new KeyFrame(Duration.millis(150),
                     e-> {  // lambda fall sem er kallað á þegar ActionEvent atburðurinn er fíraður í lok
-                        keyPressed = false;
                         snakurBord.snakur.positions.add(new Position(snakurBord.snakur.getX() + snakurBord.snakur.getxPos(), snakurBord.snakur.getY() + snakurBord.snakur.getyPos()));
                         snakurBord.snakur.rotations.add(snakurBord.snakur.getRotate());
                         snakurBord.snakur.afram();
@@ -215,6 +214,7 @@ public class SnakurController implements Initializable {
                                 }
                             });
                         }
+                        keyPressed = false;
                     });
             t = new Timeline(k);           // tengjum timeline og tímabilið
             t.setCycleCount(Timeline.INDEFINITE);
